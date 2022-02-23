@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShapeCalculatorCore\ShapeCalculator.Core.csproj" />
+    <ProjectReference Include="..\ShapeCalculator.Core\ShapeCalculator.Core.csproj" />
   </ItemGroup>
 
 </Project>

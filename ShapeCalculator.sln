@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeCalculator.API", "ShapeCalculator\ShapeCalculator.API.csproj", "{14E65F22-B05C-4A91-8A60-C74D2D169169}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShapeCalculator.API", "ShapeCalculator.API\ShapeCalculator.API.csproj", "{FECA48CB-6156-40B0-9A87-917C467608B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeCalculator.Core", "ShapeCalculatorCore\ShapeCalculator.Core.csproj", "{F215C480-B1B7-4F74-AD2C-8A5FBDB0DE87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShapeCalculator.Core", "ShapeCalculator.Core\ShapeCalculator.Core.csproj", "{55BE4565-68ED-4C5D-A65E-15A8798AEBA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeCalculator.Core.Tests", "ShapeCalculator.Core.Tests\ShapeCalculator.Core.Tests.csproj", "{081236B6-2207-472D-AB11-572731F3CB49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShapeCalculator.Core.Tests", "ShapeCalculator.Core.Tests\ShapeCalculator.Core.Tests.csproj", "{8972931B-5CCB-439C-B2DC-9DCEB80B5813}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{14E65F22-B05C-4A91-8A60-C74D2D169169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14E65F22-B05C-4A91-8A60-C74D2D169169}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14E65F22-B05C-4A91-8A60-C74D2D169169}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14E65F22-B05C-4A91-8A60-C74D2D169169}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F215C480-B1B7-4F74-AD2C-8A5FBDB0DE87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F215C480-B1B7-4F74-AD2C-8A5FBDB0DE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F215C480-B1B7-4F74-AD2C-8A5FBDB0DE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F215C480-B1B7-4F74-AD2C-8A5FBDB0DE87}.Release|Any CPU.Build.0 = Release|Any CPU
-		{081236B6-2207-472D-AB11-572731F3CB49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{081236B6-2207-472D-AB11-572731F3CB49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{081236B6-2207-472D-AB11-572731F3CB49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{081236B6-2207-472D-AB11-572731F3CB49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FECA48CB-6156-40B0-9A87-917C467608B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FECA48CB-6156-40B0-9A87-917C467608B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FECA48CB-6156-40B0-9A87-917C467608B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FECA48CB-6156-40B0-9A87-917C467608B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55BE4565-68ED-4C5D-A65E-15A8798AEBA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55BE4565-68ED-4C5D-A65E-15A8798AEBA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55BE4565-68ED-4C5D-A65E-15A8798AEBA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55BE4565-68ED-4C5D-A65E-15A8798AEBA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8972931B-5CCB-439C-B2DC-9DCEB80B5813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8972931B-5CCB-439C-B2DC-9DCEB80B5813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8972931B-5CCB-439C-B2DC-9DCEB80B5813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8972931B-5CCB-439C-B2DC-9DCEB80B5813}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
