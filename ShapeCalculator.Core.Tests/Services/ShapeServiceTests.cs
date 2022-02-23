@@ -9,7 +9,7 @@ namespace ShapeCalculator.Core.Tests.Services
         private readonly ShapeService _shapeService = new();
 
         [Fact]
-        public void GivenShapeIsTriangleWhenProcessingLeftTriangleThenNumberOfCoordinatesIs3()
+        public void GivenGridValueA1WhenProcessingLeftTriangleThenNumberOfCoordinatesIs3()
         {
             var gridValue = new GridValue("A1");
             var grid = new Grid(10);
@@ -77,7 +77,7 @@ namespace ShapeCalculator.Core.Tests.Services
         }
 
         [Fact]
-        public void GivenTriangleCoordinatesWhenProcessingGridValueThenGridValueD6()
+        public void GivenD6TriangleCoordinatesWhenProcessingGridValueThenGridValueIsD6()
         {
             var grid = new Grid(10);
             var triangle = new Triangle(new(20, 30), new(30, 30), new Coordinate(30, 40));
@@ -90,7 +90,7 @@ namespace ShapeCalculator.Core.Tests.Services
         }
 
         [Fact]
-        public void GivenTriangleCoordinatesWhenProcessingGridValueThenGridValueD5()
+        public void GivenD5TriangleCoordinatesWhenProcessingGridValueThenGridValueIsD5()
         {
             var grid = new Grid(10);
             var triangle = new Triangle(new(20, 30), new(20, 40), new Coordinate(30, 40));
