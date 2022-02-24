@@ -115,6 +115,20 @@ namespace ShapeCalculator.Core.Tests.Factories
         }
 
         [Fact]
+        public void GivenShapeIsNotProvidedWhenCalculatingCoordinatesThenShapeIsNull()
+        {
+            var grid = new Grid(10);
+            var gridValue = new GridValue("A2");
+            var shapeEnum = ShapeEnum.None;
+
+            var shapeFactory = new ShapeFactory(_shapeService.Object);
+            var actualResult = shapeFactory.CalculateCoordinates(shapeEnum, grid, gridValue);
+
+            Assert.Null(actualResult);
+            _shapeService.VerifyNoOtherCalls();
+        }
+
+        [Fact]
         public void GivenA1TriangleCoordinatesWhenCalculatingGridValueThenGridValueIsNotNullAndA1()
         {
             var expectedResult = new GridValue("A1");

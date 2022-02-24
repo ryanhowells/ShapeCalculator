@@ -31,7 +31,7 @@ namespace ShapeCalculator.API.Controllers
         public IActionResult CalculateCoordinates([FromBody]CalculateCoordinatesDTO calculateCoordinatesRequest)
         {
             var shapeEnum = (ShapeEnum)calculateCoordinatesRequest.ShapeType;
-            if (shapeEnum == 0 || shapeEnum == ShapeEnum.Other)
+            if (shapeEnum == ShapeEnum.None || shapeEnum == ShapeEnum.Other)
                 return BadRequest("Please enter a valid Shape Type.");
 
             var grid = new Grid(calculateCoordinatesRequest.Grid.Size);
@@ -72,7 +72,7 @@ namespace ShapeCalculator.API.Controllers
         public IActionResult CalculateGridValue([FromBody]CalculateGridValueDTO gridValueRequest)
         {
             var shapeEnum = (ShapeEnum)gridValueRequest.ShapeType;
-            if (shapeEnum == 0 || shapeEnum == ShapeEnum.Other)
+            if (shapeEnum == ShapeEnum.None || shapeEnum == ShapeEnum.Other)
                 return BadRequest("Please enter a valid Shape Type.");
 
             var grid = new Grid(gridValueRequest.Grid.Size);
