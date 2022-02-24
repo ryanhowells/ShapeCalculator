@@ -4,11 +4,7 @@
     {
         public GridDTO Grid { get; set; }
 
-        public Vertex TopLeftVertex { get; set; }
-
-        public Vertex OuterVertex { get; set; }
-
-        public Vertex BottomRightVertex { get; set; }
+        public List<Vertex> Vertices { get; set; }
 
         public int ShapeType { get; set; }
     }

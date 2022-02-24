@@ -7,7 +7,7 @@
             Coordinates = coordinates;
         }
 
-        protected Shape()
+        public Shape()
         {
             Coordinates = new List<Coordinate>();
         }

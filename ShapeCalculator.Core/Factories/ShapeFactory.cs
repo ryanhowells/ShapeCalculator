@@ -32,6 +32,9 @@ namespace ShapeCalculator.Core.Factories
             switch (shapeEnum)
             {
                 case ShapeEnum.Triangle:
+                    if (shape.Coordinates.Count != 3)
+                        return null;
+
                     var triangle = new Triangle(shape.Coordinates[0], shape.Coordinates[1], shape.Coordinates[2]);
 
                     return _shapeService.ProcessGridValueFromTriangularShape(grid, triangle);

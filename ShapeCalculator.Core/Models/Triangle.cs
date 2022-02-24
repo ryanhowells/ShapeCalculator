@@ -10,11 +10,6 @@
             BottomRightVertex = bottomRightVertex;
         }
 
-        public Triangle()
-        {
-            
-        }
-
         public Coordinate TopLeftVertex { get; set; }
         public Coordinate OuterVertex { get; set; }
         public Coordinate BottomRightVertex { get; set; }

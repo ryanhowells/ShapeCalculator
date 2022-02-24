@@ -145,5 +145,19 @@ namespace ShapeCalculator.Core.Tests.Factories
             Assert.Null(actualResult);
             _shapeService.VerifyNoOtherCalls();
         }
+
+        [Fact]
+        public void GivenShapeIsTriangleButHas4VerticesWhenCalculatingGridValueThenGridValueIsNull()
+        {
+            var grid = new Grid(10);
+            var shape = new Shape(new List<Coordinate> { new(0, 0), new(0, 0), new(0, 0), new(10, 10) });
+            var shapeEnum = ShapeEnum.Triangle;
+
+            var shapeFactory = new ShapeFactory(_shapeService.Object);
+            var actualResult = shapeFactory.CalculateGridValue(shapeEnum, grid, shape);
+
+            Assert.Null(actualResult);
+            _shapeService.VerifyNoOtherCalls();
+        }
     }
 }

@@ -17,18 +17,25 @@ namespace ShapeCalculator.API.Controllers
             _shapeFactory = shapeFactory;
         }
 
+        /// <summary>
+        /// Calculates the Coordinates of a shape given the Grid Value.
+        /// </summary>
+        /// <param name="calculateCoordinatesRequest"></param>   
+        /// <returns>A Coordinates response with a list of coordinates.</returns>
+        /// <response code="200">Returns the Coordinates response model.</response>
+        /// <response code="400">If an error occurred while calculating the Coordinates.</response>   
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Shape))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Route("CalculateCoordinates")]
         [HttpPost]
-        public IActionResult CalculateCoordinates([FromBody]CalculateCoordinatesDTO request)
+        public IActionResult CalculateCoordinates([FromBody]CalculateCoordinatesDTO calculateCoordinatesRequest)
         {
-            var shapeEnum = (ShapeEnum)request.ShapeType;
+            var shapeEnum = (ShapeEnum)calculateCoordinatesRequest.ShapeType;
             if (shapeEnum == 0 || shapeEnum == ShapeEnum.Other)
                 return BadRequest("Please enter a valid Shape Type.");
 
-            var grid = new Grid(request.Grid.Size);
-            var gridValue = new GridValue(request.GridValue);
+            var grid = new Grid(calculateCoordinatesRequest.Grid.Size);
+            var gridValue = new GridValue(calculateCoordinatesRequest.GridValue);
 
             var result = _shapeFactory.CalculateCoordinates(shapeEnum, grid, gridValue);
             if (result == null)
@@ -48,23 +55,32 @@ namespace ShapeCalculator.API.Controllers
             return Ok(responseModel);
         }
 
+        /// <summary>
+        /// Calculates the Grid Value of a shape given the Coordinates.
+        /// </summary>
+        /// <remarks>
+        /// A Triangle Shape must have 3 vertices, in this order: Top Left Vertex, Outer Vertex, Bottom Right Vertex.
+        /// </remarks>
+        /// <param name="gridValueRequest"></param>   
+        /// <returns>A Grid Value response with a Row and a Column.</returns>
+        /// <response code="200">Returns the Grid Value response model.</response>
+        /// <response code="400">If an error occurred while calculating the Grid Value.</response>   
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GridValue))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Route("CalculateGridValue")]
         [HttpPost]
-        public IActionResult CalculateGridValue([FromBody]CalculateGridValueDTO request)
+        public IActionResult CalculateGridValue([FromBody]CalculateGridValueDTO gridValueRequest)
         {
-            var shapeEnum = (ShapeEnum)request.ShapeType;
+            var shapeEnum = (ShapeEnum)gridValueRequest.ShapeType;
             if (shapeEnum == 0 || shapeEnum == ShapeEnum.Other)
                 return BadRequest("Please enter a valid Shape Type.");
 
-            var grid = new Grid(request.Grid.Size);
-            var shape = new Shape(new List<Coordinate>
+            var grid = new Grid(gridValueRequest.Grid.Size);
+            var shape = new Shape();
+            foreach (var vertex in gridValueRequest.Vertices)
             {
-                new(request.TopLeftVertex.x, request.TopLeftVertex.y),
-                new(request.OuterVertex.x, request.OuterVertex.y),
-                new(request.BottomRightVertex.x, request.BottomRightVertex.y),
-            });
+                shape.Coordinates.Add(new Coordinate(vertex.x, vertex.y));
+            }
 
             var result = _shapeFactory.CalculateGridValue(shapeEnum, grid, shape);
             if (result == null)
