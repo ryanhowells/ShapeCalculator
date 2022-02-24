@@ -1,5 +1,7 @@
 # ShapeCalculator
 
+Postman Collection: 
+[ShapeCalculator.postman_collection.zip](https://github.com/ryanhowells/ShapeCalculator/files/8131763/ShapeCalculator.postman_collection.zip)
 
 
 Choose your best example of your skills
