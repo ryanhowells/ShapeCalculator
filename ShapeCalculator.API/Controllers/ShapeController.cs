@@ -17,38 +17,62 @@ namespace ShapeCalculator.API.Controllers
             _shapeFactory = shapeFactory;
         }
 
-        [HttpPost(Name = "CalculateCoordinates")]
-        public IActionResult CalculateCoordinates(CalculateCoordinatesDTO request)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Shape))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Route("CalculateCoordinates")]
+        [HttpPost]
+        public IActionResult CalculateCoordinates([FromBody]CalculateCoordinatesDTO request)
         {
-            if (string.IsNullOrEmpty(request.GridValue) && request.GridValue.Length != 2)
-                return BadRequest();
+            var shapeEnum = (ShapeEnum)request.ShapeType;
+            if (shapeEnum == 0 || shapeEnum == ShapeEnum.Other)
+                return BadRequest("Please enter a valid Shape Type.");
 
             var grid = new Grid(request.Grid.Size);
             var gridValue = new GridValue(request.GridValue);
 
-            var result = _shapeFactory.CalculateCoordinates((ShapeEnum)request.ShapeType, grid, gridValue);
+            var result = _shapeFactory.CalculateCoordinates(shapeEnum, grid, gridValue);
             if (result == null)
-                return BadRequest();
+                return BadRequest("An error occurred while calculating coordinates.");
 
-            return Ok(result);
+            var responseModel = new CalculateCoordinatesResponseDTO
+            {
+                Coordinates = new List<CalculateCoordinatesResponseDTO.Coordinate>()
+            };
+
+            foreach (var coordinate in result.Coordinates)
+            {
+                responseModel.Coordinates.Add(
+                    new CalculateCoordinatesResponseDTO.Coordinate(coordinate.X, coordinate.Y));
+            }
+
+            return Ok(responseModel);
         }
 
-        [HttpPost(Name = "CalculateGridValue")]
-        public IActionResult CalculateGridValue(CalculateGridValueDTO request)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GridValue))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Route("CalculateGridValue")]
+        [HttpPost]
+        public IActionResult CalculateGridValue([FromBody]CalculateGridValueDTO request)
         {
+            var shapeEnum = (ShapeEnum)request.ShapeType;
+            if (shapeEnum == 0 || shapeEnum == ShapeEnum.Other)
+                return BadRequest("Please enter a valid Shape Type.");
+
             var grid = new Grid(request.Grid.Size);
             var shape = new Shape(new List<Coordinate>
             {
-                new(request.AngleVertex.x, request.AngleVertex.y),
-                new(request.LeftVertex.x, request.LeftVertex.y),
-                new(request.RightVertex.x, request.RightVertex.y),
+                new(request.TopLeftVertex.x, request.TopLeftVertex.y),
+                new(request.OuterVertex.x, request.OuterVertex.y),
+                new(request.BottomRightVertex.x, request.BottomRightVertex.y),
             });
 
-            var result = _shapeFactory.CalculateGridValue((ShapeEnum)request.ShapeType, grid, shape);
+            var result = _shapeFactory.CalculateGridValue(shapeEnum, grid, shape);
             if (result == null)
-                return BadRequest();
+                return BadRequest("An error occurred while calculating grid value.");
 
-            return Ok(result);
+            var responseModel = new CalculateGridValueResponseDTO(result.Row!, result.Column);
+
+            return Ok(responseModel);
         }
     }
 }

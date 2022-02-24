@@ -1,4 +1,4 @@
 ﻿namespace ShapeCalculator.Core
 {
-    public enum ShapeEnum { Triangle = 1, Other = 2 };
+    public enum ShapeEnum { Triangle = 1, Other };
 }

@@ -6,14 +6,6 @@ namespace ShapeCalculator.API.DTOs
     {
         [Required]
         [Range(1, 100)]
-        public int Height { get; set; }
-
-        [Required]
-        [Range(1, 100)]
-        public int Width { get; set; }
-
-        [Required]
-        [Range(1, 100)]
         public int Size { get; set; }
     }
 }
